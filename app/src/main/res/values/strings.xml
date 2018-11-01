@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">Storyboard</string>
+
+    <!-- String for signing up -->
+    <string name="signup_string">Sign Up</string>
+    <string name="name_string">Name</string>
+    <string name="password_string">Password</string>
+    <string name="confirm_password_string">Confirm Password</string>
+    <string name="email_string">Email</string>
+    <string name="username_string">Username</string>
+
+    <!-- String for the sidebar -->
+    <string name="profile_string">Profile</string>
+    <string name="explore_string">Explore</string>
+    <string name="messages_string">Messages</string>
+    <string name="setting_string">Settings</string>
+    <string name="logout_string">Logout</string>
+    <string name="search_string">Search</string>
+    <string name="notifications_string">Notifications</string>
+
+    <!-- String for a writers project,  -->
+    <string name="title_string">Title</string>
+    <string name="description_string">Description</string>
+    <string name="theme_string">Theme</string>
+    <string name="plot_string">Plot</string>
+    <string name="characters_string">Characters</string>
+    <string name="elements_string">Elements</string>
+
+    <!-- String for feedback -->
+    <string name="feedback_string">Feedback</string>
+    <string name="writer_feedback_string">Writer Feedback</string>
+
+    <!-- String for weekly challenges -->
+    <string name="weekly_challenges_string">Weekly Challenges</string>
+    <string name="challengeOne_string">Challenge One</string>
+    <string name="challengeTwo_string">Challenge Two</string>
+    <string name="challengeThree_string">Challenge Three</string>
+
 </resources>
