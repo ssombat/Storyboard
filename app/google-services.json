@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "764564057501",
+    "firebase_url": "https://storyboardproject-cc4be.firebaseio.com",
+    "project_id": "storyboardproject-cc4be",
+    "storage_bucket": "storyboardproject-cc4be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764564057501:android:6bdff4b86bd1dece",
+        "android_client_info": {
+          "package_name": "com.example.neema.storyboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764564057501-47o2nr07i3gm0dvng4ekmuf2j8qf2q6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.neema.storyboard",
+            "certificate_hash": "a2ef97647bdc77889448a176cb3644c4a5350f62"
+          }
+        },
+        {
+          "client_id": "764564057501-8oht2vhivufq1m9jv6drp338ck2682fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMtHhARjeY1r84sB3NCdzYHRKBOtv_6ZY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764564057501-8oht2vhivufq1m9jv6drp338ck2682fe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
