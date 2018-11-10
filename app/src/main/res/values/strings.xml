@@ -8,6 +8,10 @@
     <string name="confirm_password_string">Confirm Password</string>
     <string name="email_string">Email</string>
     <string name="username_string">Username</string>
+    <string name="login_string">Login</string>
+    <string name="enter_username_hint">Enter username</string>
+    <string name="enter_password_hint">Enter Password</string>
+
 
     <!-- String for the sidebar -->
     <string name="profile_string">Profile</string>
