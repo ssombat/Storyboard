@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Storyboard</string>
 
-    <!-- String for signing up -->
+    <!-- Strings for startup screen -->
+    <string name="welcome_string">Welcome to Storyboard!</string>
+
+    <!-- User credentials (login/signup) -->
     <string name="signup_string">Sign Up</string>
     <string name="name_header">Full Name</string>
     <string name="name_string">Enter Name</string>
@@ -12,6 +15,7 @@
     <string name="login_string">Login</string>
     <string name="enter_username_hint">Enter username</string>
     <string name="enter_password_hint">Enter Password</string>
+    <string name="forgot_creds_string">Forgot username/password?</string>
 
     <!-- String for the sidebar -->
     <string name="profile_string">Profile</string>
