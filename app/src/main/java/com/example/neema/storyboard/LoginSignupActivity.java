@@ -10,16 +10,15 @@ import android.content.Intent;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class LoginSignupActivity extends AppCompatActivity {
     static EditText uname;
     static EditText passwd;
 
-//update
+    //update
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
          uname = findViewById(R.id.username_edittext);
          passwd = findViewById(R.id.password_edittext);

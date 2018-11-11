@@ -3,15 +3,15 @@
 
     <!-- String for signing up -->
     <string name="signup_string">Sign Up</string>
-    <string name="name_string">Name</string>
+    <string name="name_header">Full Name</string>
+    <string name="name_string">Enter Name</string>
     <string name="password_string">Password</string>
     <string name="confirm_password_string">Confirm Password</string>
-    <string name="email_string">Email</string>
+    <string name="email_string">Enter Email</string>
     <string name="username_string">Username</string>
     <string name="login_string">Login</string>
     <string name="enter_username_hint">Enter username</string>
     <string name="enter_password_hint">Enter Password</string>
-
 
     <!-- String for the sidebar -->
     <string name="profile_string">Profile</string>
