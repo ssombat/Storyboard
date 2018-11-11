@@ -18,6 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPasswordHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordHeading" />
 
     <EditText
         android:id="@+id/fullNameInput"
@@ -53,6 +54,7 @@
         android:id="@+id/signupSubmit"
         android:layout_width="163dp"
         android:layout_height="50dp"
+        android:onClick="signup"
         android:layout_marginBottom="116dp"
         android:text="@string/signup_string"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -118,6 +120,7 @@
         android:id="@+id/loginSubmit"
         android:layout_width="342dp"
         android:layout_height="0dp"
+        android:onClick="login"
         android:layout_marginBottom="3dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
@@ -125,5 +128,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullNameHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/signupSubmit" />
 </android.support.constraint.ConstraintLayout>
