@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class LoginSignupActivity extends AppCompatActivity {
 
-    EditText username, password;
+    EditText usernameEditText, passwordEditText;
     Button loginButton, signupButton;
 
     //update
@@ -23,8 +23,10 @@ public class LoginSignupActivity extends AppCompatActivity {
         //uname = findViewById(R.id.username_edittext);
         //passwd = findViewById(R.id.password_edittext);
 
-        loginButton = findViewById(R.id.loginSubmit);
+        usernameEditText = findViewById(R.id.username_edittext);
+        //loginButton = findViewById(R.id.loginSubmit);
         signupButton = findViewById(R.id.signupSubmit);
+
 
 
     }
