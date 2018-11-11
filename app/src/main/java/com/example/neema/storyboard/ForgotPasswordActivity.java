@@ -11,31 +11,29 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
     Button resetButton;
     EditText emailInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgotpassword);
 
-        resetButton = findViewById(R.id.submit);
+        resetButton = findViewById(R.id.resetPasswordButton);
         emailInput = findViewById(R.id.emailInput);
-
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isValidEmail(emailInput.getText().toString())) {
-                    //TODO: Add custom dialog prompting user message has been sent
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.invalid_email),
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
 
     boolean isValidEmail(String email) {
         //TODO: verify that the email provided exists in firebase, send reset email if true
         return false;
+    }
+    void resetPressed(View v) {
+        if (isValidEmail(emailInput.getText().toString())) {
+            //TODO: Add custom dialog prompting user message has been sent
+        }
+        else {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.invalid_email),
+                    Toast.LENGTH_LONG).show();
+        }
+
     }
 }

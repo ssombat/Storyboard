@@ -23,38 +23,33 @@ public class SignupActivity extends AppCompatActivity {
         email = findViewById(R.id.emailInput);
         password = findViewById(R.id.passwordInput);
         passwordConfirm = findViewById(R.id.confirmPasswordInput);
-
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                usernameString = username.getText().toString();
-                fullNameString = fullName.getText().toString();
-                emailString = email.getText().toString();
-                passwordString = password.getText().toString();
-                passwordConfirmString = passwordConfirm.getText().toString();
-
-                if (isInfoEntered(usernameString, fullNameString, emailString, passwordString, passwordConfirmString)) {
-                    if (passwordString == passwordConfirmString) {
-                        User newUser = new User(usernameString, fullNameString, emailString, passwordString);
-                        //TODO: upload new user to firebase
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(),
-                                getString(R.string.error_password_mismatch),
-                                Toast.LENGTH_LONG).show();
-                    }
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.error_missing_field),
-                            Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
     }
 
     boolean isInfoEntered(String unIn, String fnIn, String eIn, String pwIn, String pwcIn) {
        return (unIn.length() > 0) && (fnIn.length() > 0) && (eIn.length() > 0) && (pwIn.length() > 0) && (pwIn.length() > 0);
+    }
+    void signupPressed(View v) {
+        usernameString = username.getText().toString();
+        fullNameString = fullName.getText().toString();
+        emailString = email.getText().toString();
+        passwordString = password.getText().toString();
+        passwordConfirmString = passwordConfirm.getText().toString();
+
+        if (isInfoEntered(usernameString, fullNameString, emailString, passwordString, passwordConfirmString)) {
+            if (passwordString == passwordConfirmString) {
+                User newUser = new User(usernameString, fullNameString, emailString, passwordString);
+                //TODO: upload new user to firebase
+            }
+            else {
+                Toast.makeText(getApplicationContext(),
+                        getString(R.string.error_password_mismatch),
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+        else {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.error_missing_field),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
