@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="50dp">
+
+    <Button
+        android:id="@+id/forgotPasswordSubmit"
+        android:layout_width="207dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="95dp"
+        android:onClick="login"
+        android:text="@string/forgot_password_string"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginSubmit" />
+
+
+    <TextView
+        android:id="@+id/emailHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19dp"
+        android:layout_marginTop="27dp"
+        android:text="@string/email_singular"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailLoginInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/passwordHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/password_string"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/passwordLoginInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailLoginInput" />
+
+    <Button
+        android:id="@+id/loginSubmit"
+        android:layout_width="166dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="33dp"
+        android:onClick="login"
+        android:text="@string/login_string"
+        app:layout_constraintBottom_toTopOf="@+id/forgotPasswordSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginInput" />
+
+    <EditText
+        android:id="@+id/emailLoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginStart="67dp"
+        android:ems="10"
+        android:hint="@string/enter_email_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/passwordHeading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailHeading" />
+
+    <EditText
+        android:id="@+id/passwordLoginInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginStart="67dp"
+        android:ems="10"
+        android:hint="@string/enter_password_hint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/loginSubmit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordHeading" />
+
+</android.support.constraint.ConstraintLayout>
