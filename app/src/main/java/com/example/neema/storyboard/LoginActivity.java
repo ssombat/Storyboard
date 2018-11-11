@@ -22,27 +22,19 @@ public class LoginActivity extends AppCompatActivity {
         forgotPasswordButton = findViewById(R.id.forgotPasswordSubmit);
         emailInput = findViewById(R.id.emailLoginInput);
         passwordInput = findViewById(R.id.passwordLoginInput);
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (verifyCredentials(emailInput.getText().toString(), passwordInput.getText().toString())) {
-                    startActivity(new Intent(LoginActivity.this, HomepageActivity.class));
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.invalid_login_credentials),
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        forgotPasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
-            }
-        });
+    }
+    protected void loginPressed(View v) {
+        if (verifyCredentials(emailInput.getText().toString(), passwordInput.getText().toString())) {
+            startActivity(new Intent(LoginActivity.this, HomepageActivity.class));
+        }
+        else {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.invalid_login_credentials),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+    protected void forgotPasswordPressed(View v) {
+        startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
     }
 
     boolean verifyCredentials(String email, String password) {

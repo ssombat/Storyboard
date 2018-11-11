@@ -58,7 +58,7 @@
         android:layout_width="163dp"
         android:layout_height="0dp"
         android:layout_marginBottom="15dp"
-        android:onClick="signup"
+        android:onClick="signupPressed"
         android:text="@string/signup_string"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
