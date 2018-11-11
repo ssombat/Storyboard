@@ -17,8 +17,8 @@
     <string name="enter_username_hint">Enter username</string>
     <string name="enter_email_hint">Enter email</string>
     <string name="enter_password_hint">Enter Password</string>
-    <string name="forgot_username_string">Forgot username?</string>
     <string name="forgot_password_string">Forgot password?</string>
+    <string name="reset_password_string">Reset Password</string>
 
     <!-- String for the sidebar -->
     <string name="profile_string">Profile</string>
