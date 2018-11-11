@@ -61,5 +61,6 @@
         completions."
     </string>
     <string name="invalid_login_credentials">Invalid username or password</string>
+    <string name="invalid_email">Invalid email</string>
 
 </resources>
