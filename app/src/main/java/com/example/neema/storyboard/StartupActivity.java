@@ -10,24 +10,34 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Button;
 
-public class LoginSignupActivity extends AppCompatActivity {
+public class StartupActivity extends AppCompatActivity {
 
-    EditText usernameEditText, passwordEditText;
     Button loginButton, signupButton;
 
     //update
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup);
+        setContentView(R.layout.startup);
         //uname = findViewById(R.id.username_edittext);
         //passwd = findViewById(R.id.password_edittext);
 
-        usernameEditText = findViewById(R.id.username_edittext);
-        //loginButton = findViewById(R.id.loginSubmit);
+        loginButton = findViewById(R.id.loginSubmit);
         signupButton = findViewById(R.id.signupSubmit);
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StartupActivity.this, LoginActivity.class));
+            }
+        });
 
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StartupActivity.this, SignupActivity.class));
+            }
+        });
 
     }
 
