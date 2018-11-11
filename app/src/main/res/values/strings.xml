@@ -11,11 +11,14 @@
     <string name="password_string">Password</string>
     <string name="confirm_password_string">Confirm Password</string>
     <string name="email_string">Enter Email</string>
+    <string name="email_singular">Email</string>
     <string name="username_string">Username</string>
     <string name="login_string">Login</string>
     <string name="enter_username_hint">Enter username</string>
+    <string name="enter_email_hint">Enter email</string>
     <string name="enter_password_hint">Enter Password</string>
-    <string name="forgot_creds_string">Forgot username/password?</string>
+    <string name="forgot_username_string">Forgot username?</string>
+    <string name="forgot_password_string">Forgot password?</string>
 
     <!-- String for the sidebar -->
     <string name="profile_string">Profile</string>
@@ -57,5 +60,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="invalid_login_credentials">Invalid username or password</string>
 
 </resources>
