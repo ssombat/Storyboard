@@ -1,5 +1,6 @@
 package com.example.neema.storyboard;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,10 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     Button resetButton;
     EditText emailInput;
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,19 +28,29 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.emailInput);
     }
 
-    boolean isValidEmail(String email) {
-        //TODO: verify that the email provided exists in firebase, send reset email if true
-        return false;
-    }
     void resetPressed(View v) {
-        if (isValidEmail(emailInput.getText().toString())) {
-            //TODO: Add custom dialog prompting user message has been sent
-        }
-        else {
-            Toast.makeText(getApplicationContext(),
-                    getString(R.string.invalid_email),
-                    Toast.LENGTH_LONG).show();
-        }
+        final String userEmail = emailInput.getText().toString().trim();
+        mFirebaseAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.email_sent), Toast.LENGTH_LONG).show();
+                }
+                else {
+                    String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
 
+                    switch (errorCode) {
+                        case "ERROR_USER_NOT_FOUND":
+                            Toast.makeText(getApplicationContext(), getString(R.string.email_does_not_exist), Toast.LENGTH_LONG).show();
+                            break;
+                        case "ERROR_USER_DISABLED":
+                            Toast.makeText(getApplicationContext(), getString(R.string.account_disabled), Toast.LENGTH_LONG).show();
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(), getString(R.string.error), Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
     }
 }

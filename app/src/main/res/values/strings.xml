@@ -65,4 +65,10 @@
     <string name="error_missing_field">All fields must be filled</string>
     <string name="error_password_mismatch">Passwords do not match</string>
 
+    <!-- Strings related to resetting password -->
+    <string name="email_sent">Email sent</string>
+    <string name="email_does_not_exist">Email does not exist</string>
+    <string name="error">Error</string>
+    <string name="account_disabled">Account disabled</string>
+
 </resources>
