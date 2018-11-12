@@ -28,7 +28,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.emailInput);
     }
 
-    void resetPressed(View v) {
+    protected void resetPressed(View v) {
         final String userEmail = emailInput.getText().toString().trim();
         mFirebaseAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
