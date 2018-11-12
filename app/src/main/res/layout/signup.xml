@@ -118,7 +118,7 @@
         android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="@string/enter_password_hint"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/confirmPasswordHeading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
