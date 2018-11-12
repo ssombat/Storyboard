@@ -70,5 +70,7 @@
     <string name="email_does_not_exist">Email does not exist</string>
     <string name="error">Error</string>
     <string name="account_disabled">Account disabled</string>
+    <string name="email_required">Email is required</string>
+    <string name="email_not_valid">Not a valid email</string>
 
 </resources>
