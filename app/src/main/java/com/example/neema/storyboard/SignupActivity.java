@@ -1,8 +1,11 @@
 package com.example.neema.storyboard;
 
+import android.os.TestLooperManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -49,20 +53,37 @@ public class SignupActivity extends AppCompatActivity {
         passwordConfirmString = passwordConfirm.getText().toString();
 
         if (isInfoEntered(usernameString, fullNameString, emailString, passwordString, passwordConfirmString)) {
-            if (passwordString.equals(passwordConfirmString)) {
-                //TODO: upload new user to firebase
-                registerRequest(usernameString, fullNameString, emailString, passwordString);
+            if (passwordString.length() > 5) {
+                if (passwordString.equals(passwordConfirmString)) {
+                    if (Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
+                        registerRequest(usernameString, fullNameString, emailString, passwordString);
+                    } else {
+                        email.setError(getString(R.string.email_not_valid));
+                    }
+                } else {
+                    passwordConfirm.setError(getString(R.string.error_password_mismatch));
+                }
             }
             else {
-                Toast.makeText(getApplicationContext(),
-                        getString(R.string.error_password_mismatch),
-                        Toast.LENGTH_LONG).show();
+                password.setError(getString(R.string.error_password_too_short));
             }
         }
         else {
-            Toast.makeText(getApplicationContext(),
-                    getString(R.string.error_missing_field),
-                    Toast.LENGTH_LONG).show();
+            if (TextUtils.isEmpty(username.getText())) {
+                username.setError(getString(R.string.error_field_required));
+            }
+            if (TextUtils.isEmpty(fullName.getText())) {
+                fullName.setError(getString(R.string.error_field_required));
+            }
+            if (TextUtils.isEmpty(email.getText())) {
+                email.setError(getString(R.string.error_field_required));
+            }
+            if (TextUtils.isEmpty(password.getText())) {
+                password.setError(getString(R.string.error_field_required));
+            }
+            if (TextUtils.isEmpty(passwordConfirm.getText())) {
+                passwordConfirm.setError(getString(R.string.error_field_required));
+            }
         }
     }
 
@@ -76,9 +97,19 @@ public class SignupActivity extends AppCompatActivity {
                     User newUser = new User(usernameString, fullNameString, emailString, userId);
                     mRefUserTable.child(userId).setValue(newUser);
                     mFirebaseAuth.getCurrentUser().sendEmailVerification();
+                    // TODO: Popup telling the user to check email. Remove toast when done.
+                    Toast.makeText(getApplicationContext(), getString(R.string.registration_complete), Toast.LENGTH_LONG).show();
                 }
+                // Some error as occurred, e.g. email already used to create an account.
                 else {
-                    Toast.makeText(getApplicationContext(), "Registration Error", Toast.LENGTH_LONG).show();
+                    String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                    switch (errorCode) {
+                        case "ERROR_EMAIL_ALREADY_IN_USE":
+                            email.setError(getString(R.string.error_email_in_use));
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(), getString(R.string.error_during_registering), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
