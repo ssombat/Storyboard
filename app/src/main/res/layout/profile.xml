@@ -39,7 +39,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="13dp"
         android:ems="10"
-        android:text="Hello World"
+        android:text="No Bio"
         android:inputType="textMultiLine"
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,9 +50,11 @@
 
     <Button
         android:id="@+id/settings"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="51dp"
         android:layout_height="45dp"
         android:layout_marginBottom="161dp"
+        android:onClick="settingPressed"
         app:layout_constraintBottom_toTopOf="@+id/bio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
