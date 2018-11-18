@@ -13,6 +13,6 @@ public class ProfileFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //TODO fill in the stuff for the layout for the profile fragment
-        return inflater.inflate(R.layout.home_screen,container,false);
+        return inflater.inflate(R.layout.profile,container,false);
     }
 }
