@@ -38,7 +38,10 @@
     <string name="elements_string">Elements</string>
     <string name="new_proj_string">New</string>
     <string name="freewrite_string">Freewrite</string>
+    <string name="freewrite_draft_title">New Freewrite Draft</string>
+    <string name="freewrite_draft_placeholder">Start your freewrite here...</string>
     <string name="prompt_string">Prompt</string>
+    <string name="prompt_draft_title">New Prompt Draft</string>
 
     <!-- String for feedback -->
     <string name="feedback_string">Feedback</string>
@@ -79,5 +82,6 @@
     <string name="account_disabled">Account disabled</string>
     <string name="email_required">Email is required</string>
     <string name="email_not_valid">Not a valid email</string>
+    <string name="title_activity_free_write">FreeWriteActivity</string>
 
 </resources>
