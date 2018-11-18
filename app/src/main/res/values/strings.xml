@@ -37,6 +37,8 @@
     <string name="characters_string">Characters</string>
     <string name="elements_string">Elements</string>
     <string name="new_proj_string">New</string>
+    <string name="freewrite_string">Freewrite</string>
+    <string name="prompt_string">Prompt</string>
 
     <!-- String for feedback -->
     <string name="feedback_string">Feedback</string>

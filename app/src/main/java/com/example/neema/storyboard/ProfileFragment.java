@@ -2,6 +2,7 @@ package com.example.neema.storyboard;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.view.MenuInflater;
 import android.view.View;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
@@ -43,7 +45,7 @@ public class ProfileFragment extends Fragment {
         composeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newPostButtonPressed();
+                newPostButtonPressed(composeButton);
             }
         });
     }
@@ -53,8 +55,11 @@ public class ProfileFragment extends Fragment {
         startActivity(intent);
     }
 
-    protected void newPostButtonPressed() {
+    protected void newPostButtonPressed(View v) {
         Toast.makeText(getActivity(), "new post requested", Toast.LENGTH_SHORT).show();
-        
+        PopupMenu popup = new PopupMenu(getActivity(), v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.compose_actions, popup.getMenu());
+        popup.show();
     }
 }
