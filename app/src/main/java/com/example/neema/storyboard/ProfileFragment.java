@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment{
         composeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newPostButtonPressed(composeButton);
+                newPostButtonPressed();
             }
         });
 
@@ -79,8 +79,7 @@ public class ProfileFragment extends Fragment{
         startActivity(intent);
     }
 
-    protected void newPostButtonPressed(View v) {
-        //Toast.makeText(getActivity(), "new post requested", Toast.LENGTH_SHORT).show();
+    protected void newPostButtonPressed() {
         popupMenu.show();
     }
 
