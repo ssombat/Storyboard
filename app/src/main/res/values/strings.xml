@@ -174,4 +174,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
 
+    <!-- Weekly Stuff -->
+    <string name="weekly_challenge_header"><u><b>Weekly Challenge</b></u></string>
+
 </resources>
