@@ -4,7 +4,7 @@
         android:title="@string/freewrite_string" >
         <!-- "file" submenu -->
     </item>
-    <item android:id="@+id/prompOption"
+    <item android:id="@+id/promptOption"
         android:title="@string/prompt_string" >
         <!-- "file" submenu -->
     </item>

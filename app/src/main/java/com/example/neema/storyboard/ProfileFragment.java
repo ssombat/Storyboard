@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,11 +15,13 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment{
     ImageView profilePic;
     EditText bio;
     Button settingsButton, composeButton;
+    PopupMenu popupMenu;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,10 @@ public class ProfileFragment extends Fragment {
         settingsButton = view.findViewById(R.id.settingsSubmit);
         composeButton = view.findViewById(R.id.composeSubmit);
 
+        popupMenu = new PopupMenu(getActivity(), composeButton);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.compose_actions, popupMenu.getMenu());
+
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +55,23 @@ public class ProfileFragment extends Fragment {
                 newPostButtonPressed(composeButton);
             }
         });
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.freeWriteOption:
+                        Toast.makeText(getActivity(), "freewrite selected", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.promptOption:
+                        Toast.makeText(getActivity(), "prompt selected", Toast.LENGTH_SHORT).show();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
     }
 
     protected void settingFrag(View v) {
@@ -56,10 +80,8 @@ public class ProfileFragment extends Fragment {
     }
 
     protected void newPostButtonPressed(View v) {
-        Toast.makeText(getActivity(), "new post requested", Toast.LENGTH_SHORT).show();
-        PopupMenu popup = new PopupMenu(getActivity(), v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.compose_actions, popup.getMenu());
-        popup.show();
+        //Toast.makeText(getActivity(), "new post requested", Toast.LENGTH_SHORT).show();
+        popupMenu.show();
     }
+
 }
