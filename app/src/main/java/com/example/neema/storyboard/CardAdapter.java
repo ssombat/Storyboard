@@ -8,7 +8,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder> {
-    private List<Card> cards;
+    public List<Card> cards;
     public class CardViewHolder extends RecyclerView.ViewHolder {
         private TextView title,text;
 
