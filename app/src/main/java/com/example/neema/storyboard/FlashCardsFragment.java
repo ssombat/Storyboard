@@ -40,8 +40,10 @@ public class FlashCardsFragment extends Fragment {
             this.text = text;
             this.isPublic = isPublic;
         }*/
-        Card card = new Card(CardType.FREEWRITE,"1234","test","test",true);
-        cards.add(card);
+        for(int i = 0; i < 10; i++) {
+            Card card = new Card(CardType.FREEWRITE, "1234", "test", "test", true);
+            cards.add(card);
+        }
         mAdapter = new CardAdapter(cards);
     }
 
