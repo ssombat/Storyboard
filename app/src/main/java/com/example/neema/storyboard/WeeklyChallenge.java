@@ -41,7 +41,7 @@ public class WeeklyChallenge extends AppCompatActivity {
     public void saveChallengeToCard(View v) {
         String userText = ((EditText) findViewById(R.id.editText)).getText().toString();
         String weeklyText = ((TextView) findViewById(R.id.challengeText)).getText().toString();
-        String uid = mFirebaseAuth.getUid();
+        String uid = mFirebaseAuth.getCurrentUser().getUid();
 
         Card card = new Card(CardType.WEEKLY, uid, "", userText, false, weeklyText);
 

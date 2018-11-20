@@ -1,6 +1,7 @@
 package com.example.neema.storyboard;
 import android.app.Activity;
 import android.app.Fragment;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -11,6 +12,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.graphics.Canvas;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +26,11 @@ public class FlashCardsFragment extends Fragment {
     private CardAdapter mAdapter;
     SwipeController swipeController;
     ItemTouchHelper itemTouchHelper;
+
+    private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference mRef = mFirebaseDatabase.getReference("CardTable");
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+    private String currentUser = mFirebaseAuth.getCurrentUser().getUid();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,13 +44,30 @@ public class FlashCardsFragment extends Fragment {
         return v;
     }
     private void setCardsDataAdapter() {
-        List<Card> cards = new ArrayList<>();
-            //TODO READ FROM DATABASE AND SET UP CARD OBJECT
+        final List<Card> cards = new ArrayList<>();
+        // Gets the cards out of the database for the current user
+        // TODO set up cards correctly, currently pulls cards out the database.
+        mRef.child(currentUser).child("Cards").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String title = (String) postSnapshot.child("title").getValue();
+                    String text = (String) postSnapshot.child("text").getValue();
+                    String uid = currentUser;
+                    boolean isPublic = false;
 
-        for(int i = 0; i < 10; i++) {
-            Card card = new Card(CardType.FREEWRITE, "1234", "test", "test", true);
-            cards.add(card);
-        }
+                    Card card = new Card(CardType.FREEWRITE, uid, title, text, isPublic);
+                    cards.add(card);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
         mAdapter = new CardAdapter(cards);
     }
     private void setupRecyclerView(View v) {
