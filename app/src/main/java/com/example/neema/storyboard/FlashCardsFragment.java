@@ -51,12 +51,7 @@ public class FlashCardsFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    String title = (String) postSnapshot.child("title").getValue();
-                    String text = (String) postSnapshot.child("text").getValue();
-                    String uid = currentUser;
-                    boolean isPublic = false;
-
-                    Card card = new Card(CardType.FREEWRITE, uid, title, text, isPublic);
+                    Card card = createCard(postSnapshot);
                     cards.add(card);
                 }
             }
@@ -91,5 +86,45 @@ public class FlashCardsFragment extends Fragment {
                 swipeController.onDraw(c);
             }
         });
+    }
+
+    private Card createCard(DataSnapshot postSnapshot) {
+        String cardTypeString = (String) postSnapshot.child("cardType").getValue();
+        // Need to convert the database string of card type to CardType enum
+        CardType cardType = getCardType(cardTypeString);
+
+        String uid = currentUser;
+        String cardId = (String) postSnapshot.child("cardId").getValue();
+        String title = (String) postSnapshot.child("title").getValue();
+        String text = (String) postSnapshot.child("text").getValue();
+        boolean isPublic = (boolean) postSnapshot.child("public").getValue();
+        String weekly = (String) postSnapshot.child("weeklyText").getValue();
+
+        Card card;
+        switch (cardType) {
+            case FREEWRITE:
+                card = new Card(CardType.FREEWRITE, uid, cardId, title, text, isPublic);
+                break;
+            case WEEKLY:
+                card = new Card(CardType.WEEKLY, uid, cardId, title, text, isPublic, weekly);
+                break;
+            case PROMPT:
+                card = new Card(CardType.PROMPT, uid, cardId, "", text, isPublic);
+            default:
+                card = new Card(CardType.FREEWRITE, uid, cardId, title, text, isPublic);
+        }
+        return card;
+
+    }
+    private CardType getCardType(String cardType) {
+        switch (cardType) {
+            case "FREEWRITE":
+                return CardType.FREEWRITE;
+            case "PROMPT":
+                return CardType.PROMPT;
+            case "WEEKLY":
+                return CardType.WEEKLY;
+        }
+        return CardType.FREEWRITE;
     }
 }

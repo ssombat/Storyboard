@@ -100,7 +100,7 @@ public class SignupActivity extends AppCompatActivity {
                     mFirebaseAuth.getCurrentUser().sendEmailVerification();
 
                     String cardKey = mRefCardTable.child(userId).child("Cards").push().getKey();
-                    mRefCardTable.child(userId).child("Cards").child(cardKey).setValue(new Card(CardType.FREEWRITE, "userId","Welcome","Welcome to Storyboard", false));
+                    mRefCardTable.child(userId).child("Cards").child(cardKey).setValue(new Card(CardType.FREEWRITE, userId, cardKey,"Welcome","Welcome to Storyboard", false));
 
 
                     // TODO: Popup telling the user to check email. Remove toast when done.

@@ -18,6 +18,7 @@ public class WeeklyChallenge extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mRef = mFirebaseDatabase.getReference("Weekly");
+    DatabaseReference cardRef = mFirebaseDatabase.getReference("CardTable");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +43,9 @@ public class WeeklyChallenge extends AppCompatActivity {
         String userText = ((EditText) findViewById(R.id.editText)).getText().toString();
         String weeklyText = ((TextView) findViewById(R.id.challengeText)).getText().toString();
         String uid = mFirebaseAuth.getCurrentUser().getUid();
-
-        Card card = new Card(CardType.WEEKLY, uid, "", userText, false, weeklyText);
-
-        DatabaseReference cardRef = mFirebaseDatabase.getReference("CardTable");
         String cardId = cardRef.child(uid).child("Cards").push().getKey();
+        Card card = new Card(CardType.WEEKLY, uid, cardId, "", userText, false, weeklyText);
+
         cardRef.child(uid).child("Cards").child(cardId).setValue(card);
     }
 }
