@@ -7,15 +7,17 @@ enum CardType {
 public class Card {
     CardType cardType;
     private String uid;
+    private String cardId;
     private String title;
     private String text;
     private boolean isPublic;
     private String weeklyText = "";
 
 
-    public Card(CardType cardType,String uid, String title, String text, boolean isPublic) {
+    public Card(CardType cardType, String uid, String cardId, String title, String text, boolean isPublic) {
         this.cardType = cardType;
         this.uid = uid;
+        this.cardId = cardId;
         this.title = title;
         this.text = text;
         this.isPublic = isPublic;
@@ -23,9 +25,10 @@ public class Card {
 
     // Overloaded Constructor for Weekly cards only!
 
-    public Card(CardType cardType,String uid, String title, String text, boolean isPublic, String weeklyText) {
+    public Card(CardType cardType, String uid, String cardId, String title, String text, boolean isPublic, String weeklyText) {
         this.cardType = cardType;
         this.uid = uid;
+        this.cardId = cardId;
         this.title = title;
         this.text = text;
         this.isPublic = isPublic;
@@ -54,5 +57,9 @@ public class Card {
 
     public String getWeeklyText() {
         return weeklyText;
+    }
+
+    public String getCardId() {
+        return cardId;
     }
 }

@@ -28,6 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRefUserTable = mFirebaseDatabase.getReference("UserTable");
+    DatabaseReference mRefCardTable = mFirebaseDatabase.getReference("CardTable");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,11 @@ public class SignupActivity extends AppCompatActivity {
                     User newUser = new User(usernameString, fullNameString, emailString, userId);
                     mRefUserTable.child(userId).setValue(newUser);
                     mFirebaseAuth.getCurrentUser().sendEmailVerification();
+
+                    String cardKey = mRefCardTable.child(userId).child("Cards").push().getKey();
+                    mRefCardTable.child(userId).child("Cards").child(cardKey).setValue(new Card(CardType.FREEWRITE, userId, cardKey,"Welcome","Welcome to Storyboard", false));
+
+
                     // TODO: Popup telling the user to check email. Remove toast when done.
                     Toast.makeText(getApplicationContext(), getString(R.string.registration_complete), Toast.LENGTH_LONG).show();
                 }
