@@ -73,9 +73,13 @@ public class FlashCardsFragment extends Fragment {
             @Override
             public void onRightClicked(int position) {
                 //TODO REMOVE THE CARD FROM VIEW AND REMOVE FROM DATA BASE
+                Card card = mAdapter.cards.get(position);
                 mAdapter.cards.remove(position);
                 mAdapter.notifyItemRemoved(position);
                 mAdapter.notifyItemRangeChanged(position,mAdapter.getItemCount());
+
+                //Deletes from the database
+                mRef.child(currentUser).child("Cards").child(card.getCardId()).removeValue();
             }
         });
         itemTouchHelper = new ItemTouchHelper(swipeController);
