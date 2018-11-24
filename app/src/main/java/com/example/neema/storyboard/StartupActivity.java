@@ -6,18 +6,28 @@ import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class StartupActivity extends AppCompatActivity {
+    private FirebaseAuth auth;
 
     Button loginButton, signupButton;
+
 
     //update
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.startup);
+        auth = FirebaseAuth.getInstance();
+        if(auth.getCurrentUser() != null) {
+            // start activity
+            startActivity(new Intent(StartupActivity.this, HomepageActivity.class));
+        }else {
+            setContentView(R.layout.startup);
 
-        loginButton = findViewById(R.id.loginSubmit);
-        signupButton = findViewById(R.id.signupSubmit);
+            loginButton = findViewById(R.id.loginSubmit);
+            signupButton = findViewById(R.id.signupSubmit);
+        }
 
     }
 
