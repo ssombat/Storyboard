@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.graphics.Canvas;
+import android.content.Intent;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -80,6 +81,11 @@ public class FlashCardsFragment extends Fragment {
 
                 //Deletes from the database
                 mRef.child(currentUser).child("Cards").child(card.getCardId()).removeValue();
+            }
+            @Override
+            public void onLeftClicked(int position) {
+                //TODO BRIAN's PAGE
+                startActivity(new Intent(getContext(),FreeWriteActivity.class));
             }
         });
         itemTouchHelper = new ItemTouchHelper(swipeController);
