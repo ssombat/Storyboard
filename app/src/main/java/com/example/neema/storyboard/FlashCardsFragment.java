@@ -85,7 +85,22 @@ public class FlashCardsFragment extends Fragment {
             @Override
             public void onLeftClicked(int position) {
                 //TODO BRIAN's PAGE
-                startActivity(new Intent(getContext(),FreeWriteActivity.class));
+                Card card = mAdapter.cards.get(position);
+                CardType type = card.cardType;
+                switch(type) {
+                    case FREEWRITE:
+                        //TODO FREWRITE ACTIVITY
+                        startActivity(new Intent(getContext(),FreeWriteActivity.class));
+                        break;
+                    case PROMPT:
+                        //TODO PROMPT ACTIVITY
+                        startActivity(new Intent(getContext(),PromptActivity.class));
+                        break;
+                    case WEEKLY:
+                        //TODO IDK IF ANYTHING IS NEEDED
+                        break;
+
+                }
             }
         });
         itemTouchHelper = new ItemTouchHelper(swipeController);
