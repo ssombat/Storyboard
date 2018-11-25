@@ -6,9 +6,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Switch;
 
 public class PromptActivity extends AppCompatActivity {
 
+    EditText draftText;
+    Switch privacy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +20,8 @@ public class PromptActivity extends AppCompatActivity {
         setContentView(R.layout.prompt);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        draftText = findViewById(R.id.draftText);
 
         FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -25,5 +31,7 @@ public class PromptActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
     }
 }

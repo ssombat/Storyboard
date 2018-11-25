@@ -42,5 +42,10 @@
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_menu_save" />
 
+    <Switch
+        android:id="@+id/privacySwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <include layout="@layout/content_free_write" />
 </android.support.design.widget.CoordinatorLayout>

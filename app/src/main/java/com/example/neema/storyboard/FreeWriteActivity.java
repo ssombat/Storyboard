@@ -6,17 +6,45 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class FreeWriteActivity extends AppCompatActivity {
+
+    EditText draftText;
+    TextView visibilityText;
+    Switch privacySwitch;
+    boolean isPrivate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freewrite);
+
+        draftText = findViewById(R.id.draftText);
+        visibilityText = findViewById(R.id.visibilityText);
+        privacySwitch = findViewById(R.id.privacySwitch);
+        isPrivate = privacySwitch.isChecked();
+        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
+        privacySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    visibilityText.setText("Visibility: Private");
+                }
+                else {
+                    visibilityText.setText("Visibility: Public");
+                }
+                isPrivate = isChecked;
+            }
+        });
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
