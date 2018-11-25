@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <Button
+            android:id="@+id/usernameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick= "usernamePressed"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="11dp"
+            android:text="Submit" />
+
+        <Button
+            android:id="@+id/passwordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="passPressed"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Menu" />
+
+        <Button
+            android:id="@+id/bioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="bioPressed"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:text="Menu" />
+
+        <EditText
+            android:id="@+id/changeUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ems="10"
+            android:hint="@string/username_string"
+            android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/oldpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ems="10"
+            android:hint="Old password"
+            android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/newPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ems="10"
+            android:hint="New Password"
+            android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/newPassConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ems="10"
+            android:hint="Confirm new password"
+            android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/changeBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ems="10"
+            android:hint="Change Bio"
+            android:inputType="textPersonName" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/topLayout"
+        android:background="@color/navalBlue">
+
+        <ScrollView
+            android:id="@+id/promptScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+        </ScrollView>
+        // place your all scrollable views here.
+
+    </RelativeLayout>
+    >
+
+</LinearLayout>
