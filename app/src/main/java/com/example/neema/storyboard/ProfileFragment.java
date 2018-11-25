@@ -45,7 +45,8 @@ public class ProfileFragment extends Fragment{
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "settings in profile fragment hit", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), Settings.class);
+                startActivity(intent);
             }
         });
 

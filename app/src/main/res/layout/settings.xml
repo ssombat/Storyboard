@@ -2,13 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/topLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary">
 
         <Button
             android:id="@+id/usernameButton"
@@ -18,7 +11,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="11dp"
-            android:text="Submit" />
+            android:text="username" />
 
         <Button
             android:id="@+id/passwordButton"
@@ -28,7 +21,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:text="Menu" />
+            android:text="pass Press" />
 
         <Button
             android:id="@+id/bioButton"
@@ -38,7 +31,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:text="Menu" />
+            android:text="Bio" />
 
         <EditText
             android:id="@+id/changeUsername"
@@ -80,27 +73,5 @@
             android:ems="10"
             android:hint="Change Bio"
             android:inputType="textPersonName" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/contentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/topLayout"
-        android:background="@color/navalBlue">
-
-        <ScrollView
-            android:id="@+id/promptScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
-
-        </ScrollView>
-        // place your all scrollable views here.
-
-    </RelativeLayout>
-    >
 
 </LinearLayout>

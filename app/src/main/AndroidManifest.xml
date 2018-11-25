@@ -35,6 +35,7 @@
             android:label="@string/title_activity_free_write"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".WeeklyChallenge"></activity>
+        <activity android:name=".Settings"/>
     </application>
 
 </manifest>
