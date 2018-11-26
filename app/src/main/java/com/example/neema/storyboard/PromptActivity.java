@@ -37,7 +37,7 @@ public class PromptActivity extends AppCompatActivity {
         privacySwitch = findViewById(R.id.privacySwitch);
         isPrivate = privacySwitch.isChecked();
         FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
-        FloatingActionButton favButton = (FloatingActionButton) findViewById(R.id.favButton);
+        FloatingActionButton uploadButton = (FloatingActionButton) findViewById(R.id.uploadButton);
         FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -64,12 +64,26 @@ public class PromptActivity extends AppCompatActivity {
             }
         });
 
-        favButton.setOnClickListener(new View.OnClickListener() {
+        uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),
-                        "Favorite button pressed",
-                        Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder inputDialog = new AlertDialog.Builder(PromptActivity.this);
+                inputDialog.setTitle("Are you sure you want to upload this prompt to the community?");
+
+                inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                inputDialog.setPositiveButton("Back to drafting", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                inputDialog.show();
             }
         });
 
