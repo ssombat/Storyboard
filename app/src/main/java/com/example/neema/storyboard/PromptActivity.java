@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PromptActivity extends AppCompatActivity {
 
@@ -28,6 +29,8 @@ public class PromptActivity extends AppCompatActivity {
         privacySwitch = findViewById(R.id.privacySwitch);
         isPrivate = privacySwitch.isChecked();
         FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
+        FloatingActionButton favButton = (FloatingActionButton) findViewById(R.id.favButton);
+        FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,6 +56,22 @@ public class PromptActivity extends AppCompatActivity {
             }
         });
 
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        "Favorite button pressed",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        titleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        "Title edit button pressed",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

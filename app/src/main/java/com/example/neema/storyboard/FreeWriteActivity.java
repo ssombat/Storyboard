@@ -31,6 +31,7 @@ public class FreeWriteActivity extends AppCompatActivity {
         isPrivate = privacySwitch.isChecked();
         FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
         FloatingActionButton favButton = (FloatingActionButton) findViewById(R.id.favButton);
+        FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,6 +55,24 @@ public class FreeWriteActivity extends AppCompatActivity {
 
                 Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        "Favorite button pressed",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        titleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),
+                        "Title edit button pressed",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
