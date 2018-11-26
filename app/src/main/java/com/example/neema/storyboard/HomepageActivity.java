@@ -15,7 +15,7 @@ public class HomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
         profile = (ProfileFragment) getFragmentManager().findFragmentById(R.id.profile);
-        //flashcards = (FlashCardsFragment) getFragmentManager().findFragmentById(R.id.cardList);
+        flashcards = (FlashCardsFragment) getFragmentManager().findFragmentById(R.id.flashCardList);
 
     }
 

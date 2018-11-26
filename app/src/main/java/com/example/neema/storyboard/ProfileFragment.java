@@ -25,6 +25,7 @@ public class ProfileFragment extends Fragment{
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setRetainInstance(true);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class ProfileFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "settings in profile fragment hit", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(),CommunityActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -80,6 +83,7 @@ public class ProfileFragment extends Fragment{
         Intent intent = new Intent(getActivity(),ProfileSetting.class);
         startActivity(intent);
     }
+
 
     protected void newPostButtonPressed() {
         popupMenu.show();
