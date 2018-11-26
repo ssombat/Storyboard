@@ -73,7 +73,10 @@ public class PromptActivity extends AppCompatActivity {
                 inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        //TODO: UPLOAD PROMPT TEXT AND TITLE TO COMMUNITY
+                        Toast.makeText(getApplicationContext(),
+                                "Uploaded successfully!",
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -103,18 +106,17 @@ public class PromptActivity extends AppCompatActivity {
 
                 inputDialog.setView(input);
 
-                inputDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-
-                inputDialog.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         titlePlaceholderText = input.getText().toString();
                         titleText.setText(titlePlaceholderText);
+                    }
+                });
+                inputDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
                     }
                 });
                 inputDialog.show();
