@@ -42,6 +42,8 @@
     <string name="freewrite_draft_placeholder">Start your drafting here...</string>
     <string name="prompt_string">Prompt</string>
     <string name="prompt_draft_title">New Prompt Draft</string>
+    <string name="public_string">Public</string>
+    <string name="private_string">Private</string>
 
     <!-- String for feedback -->
     <string name="feedback_string">Feedback</string>
