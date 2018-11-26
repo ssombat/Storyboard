@@ -5,11 +5,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FreeWriteActivity extends AppCompatActivity {
 
@@ -28,6 +30,7 @@ public class FreeWriteActivity extends AppCompatActivity {
         privacySwitch = findViewById(R.id.privacySwitch);
         isPrivate = privacySwitch.isChecked();
         FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
+        FloatingActionButton favButton = (FloatingActionButton) findViewById(R.id.favButton);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,6 +51,7 @@ public class FreeWriteActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
