@@ -46,7 +46,6 @@ public class ProfileFragment extends Fragment{
         communityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "settings in profile fragment hit", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(),CommunityActivity.class);
                 startActivity(intent);
             }
@@ -76,7 +75,6 @@ public class ProfileFragment extends Fragment{
                 }
             }
         });
-
     }
 
     protected void settingFrag(View v) {
