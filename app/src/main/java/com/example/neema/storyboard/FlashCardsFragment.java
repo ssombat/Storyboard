@@ -36,8 +36,13 @@ public class FlashCardsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setRetainInstance(true);
         setCardsDataAdapter();
     }
+    /*@Override
+    public void onViewCreated(View view, Bundle instanceSaved) {
+
+    }*/
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //TODO fill in the stuff for the layout for the profile fragment
         View v = inflater.inflate(R.layout.cards_list,container,false);
