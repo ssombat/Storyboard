@@ -9,13 +9,12 @@
     tools:showIn="@layout/freewrite">
 
     <EditText
-
         android:id="@+id/draftText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
-        android:text="@string/freewrite_draft_placeholder" />
+        android:hint="@string/freewrite_draft_placeholder"/>
 
 </android.support.v4.widget.NestedScrollView>
