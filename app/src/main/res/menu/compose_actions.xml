@@ -8,4 +8,8 @@
         android:title="@string/prompt_string" >
         <!-- "file" submenu -->
     </item>
+    <item android:id="@+id/settingsOption"
+        android:title="@string/setting_string" >
+        <!-- "file" submenu -->
+    </item>
 </menu>

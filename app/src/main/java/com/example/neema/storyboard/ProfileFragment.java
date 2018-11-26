@@ -20,7 +20,7 @@ import android.widget.Toolbar;
 public class ProfileFragment extends Fragment{
     ImageView profilePic;
     EditText bio;
-    Button settingsButton, composeButton;
+    Button communityButton, composeButton;
     PopupMenu popupMenu;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -36,17 +36,16 @@ public class ProfileFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         profilePic = view.findViewById(R.id.profilePicture);
         bio = view.findViewById(R.id.bio);
-        settingsButton = view.findViewById(R.id.settingsSubmit);
+        communityButton = view.findViewById(R.id.communitySubmit);
         composeButton = view.findViewById(R.id.composeSubmit);
 
         popupMenu = new PopupMenu(getActivity(), composeButton);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.compose_actions, popupMenu.getMenu());
 
-        settingsButton.setOnClickListener(new View.OnClickListener() {
+        communityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "settings in profile fragment hit", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(),CommunityActivity.class);
                 startActivity(intent);
             }
@@ -76,7 +75,6 @@ public class ProfileFragment extends Fragment{
                 }
             }
         });
-
     }
 
     protected void settingFrag(View v) {

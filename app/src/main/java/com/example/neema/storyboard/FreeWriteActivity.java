@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -45,6 +46,7 @@ public class FreeWriteActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         privacySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -67,7 +69,7 @@ public class FreeWriteActivity extends AppCompatActivity {
                 titleText.getText().toString();
                 draftText.getText().toString();*/
 
-                Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -75,13 +77,16 @@ public class FreeWriteActivity extends AppCompatActivity {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder inputDialog = new AlertDialog.Builder(FreeWriteActivity.this);
+                final AlertDialog.Builder inputDialog = new AlertDialog.Builder(FreeWriteActivity.this);
                 inputDialog.setTitle("Are you sure you want to upload this story to the community?");
 
                 inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //TODO: UPLOAD STORY CONTENTS TO THE COMMUNITY PAGE
+                        Toast.makeText(getApplicationContext(),
+                                "Uploaded successfully!",
+                                Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -111,18 +116,17 @@ public class FreeWriteActivity extends AppCompatActivity {
 
                 inputDialog.setView(input);
 
-                inputDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-
-                inputDialog.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         titlePlaceholderText = input.getText().toString();
                         titleText.setText(titlePlaceholderText);
+                    }
+                });
+                inputDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
                     }
                 });
                 inputDialog.show();
