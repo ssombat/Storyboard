@@ -26,9 +26,24 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                app:title="@string/freewrite_draft_title"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+                <TextView
+                    android:id="@+id/toolbarTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/freewrite_draft_title"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:width="0dp"
+                    android:paddingLeft="70dp"
+                    android:paddingRight="70dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
+            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -76,7 +91,7 @@
             android:id="@+id/visibilityText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Visibility: Public"
+            android:text="@string/public_string"
             android:textColor="@color/white" />
     </RelativeLayout>
 
