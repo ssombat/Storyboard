@@ -75,6 +75,7 @@ public class SettingsActivity extends AppCompatActivity{
         usernameString = username.getText().toString();
         if (isInfoEntered(usernameString)){
             mRefUserTable.child(currentUser).child("username").setValue(usernameString);
+            Toast.makeText(this, "Username Changed", Toast.LENGTH_SHORT).show();
         }
         else {username.setError("Not a Username");}
 
@@ -122,6 +123,7 @@ public class SettingsActivity extends AppCompatActivity{
         bioString = changeBio.getText().toString();
         if (isInfoEntered(bioString)){
             mRefUserTable.child(currentUser).child("bio").setValue(bioString);
+            Toast.makeText(this, "Bio Changed", Toast.LENGTH_SHORT).show();
         }
         else{changeBio.setError("Must enter Bio");}
     }
