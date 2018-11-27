@@ -37,7 +37,7 @@ public class PromptActivity extends AppCompatActivity {
         titleText = findViewById(R.id.toolbarTitle);
         privacySwitch = findViewById(R.id.privacySwitch);
         isPrivate = privacySwitch.isChecked();
-        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
+//        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
         FloatingActionButton uploadButton = (FloatingActionButton) findViewById(R.id.uploadButton);
         FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);
 
@@ -58,24 +58,30 @@ public class PromptActivity extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder inputDialog = new AlertDialog.Builder(PromptActivity.this);
-                inputDialog.setTitle("Are you sure you want to upload this prompt to the community?");
+                if(isPrivate){
+                    inputDialog.setTitle("Are you sure you want to post this prompt privately?");
+
+                } else {
+                    inputDialog.setTitle("Are you sure you want to upload this prompt to the community?");
+                }
 
                 inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //TODO: UPLOAD PROMPT TEXT AND TITLE TO COMMUNITY
+                        //TODO: UPLOAD PROMPT BASED ON PRIVACY
                         Toast.makeText(getApplicationContext(),
                                 "Uploaded successfully!",
                                 Toast.LENGTH_LONG).show();
