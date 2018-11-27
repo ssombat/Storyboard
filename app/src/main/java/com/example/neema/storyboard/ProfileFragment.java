@@ -18,8 +18,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 public class ProfileFragment extends Fragment{
-    ImageView profilePic;
-    EditText bio;
+    TextView bio;
     Button communityButton, composeButton;
     PopupMenu popupMenu;
 
@@ -34,7 +33,6 @@ public class ProfileFragment extends Fragment{
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        profilePic = view.findViewById(R.id.profilePicture);
         bio = view.findViewById(R.id.bio);
         communityButton = view.findViewById(R.id.communitySubmit);
         composeButton = view.findViewById(R.id.composeSubmit);
