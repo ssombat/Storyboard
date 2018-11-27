@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <!--android:theme="@style/AppTheme">-->
+
+        <!-- android:theme="@style/AppTheme"> -->
 
         <activity android:name=".StartupActivity">
             <intent-filter>
@@ -36,8 +37,9 @@
             android:name=".PromptActivity"
             android:label="@string/title_activity_free_write"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".WeeklyChallenge"></activity>
-        <activity android:name=".CommunityActivity"></activity>
+        <activity android:name=".WeeklyChallenge" />
+        <activity android:name=".CommunityActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

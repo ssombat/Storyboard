@@ -72,6 +72,7 @@ public class ProfileFragment extends Fragment{
                         return true;
                     case R.id.settingsOption:
                         Toast.makeText(getActivity(), "settings selected", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), SettingsActivity.class));
                         return true;
                     default:
                         return false;
@@ -81,7 +82,7 @@ public class ProfileFragment extends Fragment{
     }
 
     protected void settingFrag(View v) {
-        Intent intent = new Intent(getActivity(),ProfileSetting.class);
+        Intent intent = new Intent(getActivity(), SettingsActivity.class);
         startActivity(intent);
     }
 
