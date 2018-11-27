@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="50dp">
+    tools:layout_editor_absoluteY="50dp"
+    android:background="@drawable/bubble_background"
+    >
 
     <EditText
         android:id="@+id/usernameInput"
@@ -20,7 +22,12 @@
         app:layout_constraintBottom_toTopOf="@+id/fullNameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColorHint="#a8ffffff"
+        android:background="#34ffffff"
+        android:textColor="#a8ffffff"
+        android:textSize="17dp"
+        />
 
     <EditText
         android:id="@+id/confirmPasswordInput"
@@ -36,7 +43,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordHeading"
+        android:textColorHint="#a8ffffff"
+        android:background="#34ffffff"
+        android:textColor="#a8ffffff"
+        android:textSize="17dp"
+        />
 
     <EditText
         android:id="@+id/fullNameInput"
@@ -51,7 +63,12 @@
         app:layout_constraintBottom_toTopOf="@+id/emailInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameInput"
+        android:textColorHint="#a8ffffff"
+        android:background="#34ffffff"
+        android:textColor="#a8ffffff"
+        android:textSize="17dp"
+        />
 
     <EditText
         android:id="@+id/emailInput"
@@ -66,7 +83,12 @@
         app:layout_constraintBottom_toTopOf="@+id/passwordInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullNameInput" />
+        app:layout_constraintTop_toBottomOf="@+id/fullNameInput"
+        android:textColorHint="#a8ffffff"
+        android:background="#34ffffff"
+        android:textColor="#a8ffffff"
+        android:textSize="17dp"
+        />
 
     <Button
         android:id="@+id/signupSubmit"
@@ -78,7 +100,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInput"
+        android:textColor="#c3ffffff"
+        android:background="@drawable/login_background"
+        />
 
     <TextView
         android:id="@+id/fullNameHeading"
@@ -89,7 +114,9 @@
         android:text="@string/name_header"
         app:layout_constraintBottom_toTopOf="@+id/emailHeading"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameHeading"
+        android:textColor="#cfffffff"
+        />
 
     <TextView
         android:id="@+id/emailHeading"
@@ -100,7 +127,9 @@
         android:text="@string/email_string"
         app:layout_constraintBottom_toTopOf="@+id/passwordHeading"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullNameHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/fullNameHeading"
+        android:textColor="#cfffffff"
+        />
 
     <TextView
         android:id="@+id/passwordHeading"
@@ -111,7 +140,9 @@
         android:text="@string/password_string"
         app:layout_constraintBottom_toTopOf="@+id/passwordInput"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/emailHeading"
+        android:textColor="#cfffffff"
+        />
 
     <TextView
         android:id="@+id/confirmPasswordHeading"
@@ -122,7 +153,9 @@
         android:text="@string/confirm_password_string"
         app:layout_constraintBottom_toTopOf="@+id/confirmPasswordInput"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput"
+        android:textColor="#cfffffff"
+        />
 
     <EditText
         android:id="@+id/passwordInput"
@@ -138,7 +171,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        app:layout_constraintTop_toBottomOf="@+id/emailInput"
+        android:textColorHint="#a8ffffff"
+        android:background="#34ffffff"
+        android:textColor="#a8ffffff"
+        android:textSize="17dp"
+        />
 
     <TextView
         android:id="@+id/usernameHeading"
@@ -150,8 +188,32 @@
         android:text="@string/username_string"
         app:layout_constraintBottom_toTopOf="@+id/fullNameHeading"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#cfffffff"
+        />
 
+    <com.github.glomadrian.grav.GravView
+        android:id="@+id/grav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:colorGenerator="com.github.glomadrian.grav.generator.paint.ArrayColorGenerator"
+        app:array_colors="@array/bubble"
+        app:pointGenerator="com.github.glomadrian.grav.generator.point.RegularPointGenerator"
+        app:regular_cell_size="300"
+        app:regular_variance="200"
+        app:gravGenerator="com.github.glomadrian.grav.generator.grav.BallGenerator"
+        app:ball_from_size="10dp"
+        app:ball_to_size="20dp"
+        app:animationGenerators="@array/BubbleAnimations"
+        app:side_to_side_min_duration="10000"
+        app:side_to_side_max_duration="10000"
+        app:side_to_side_direction="leftToRight"
+        app:shake_direction="vertical"
+        app:shake_min_duration="10000"
+        app:shake_max_duration="20000"
+        app:shake_variance="500dp"
+        />
 
 
 </android.support.constraint.ConstraintLayout>
