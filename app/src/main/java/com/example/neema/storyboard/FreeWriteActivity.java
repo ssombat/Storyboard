@@ -17,8 +17,15 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class FreeWriteActivity extends AppCompatActivity {
 
+    String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference mRef = mDatabase.getReference("CardTable");
     EditText draftText;
     TextView visibilityText;
     TextView titleText;
@@ -68,6 +75,10 @@ public class FreeWriteActivity extends AppCompatActivity {
                 isPrivate
                 titleText.getText().toString();
                 draftText.getText().toString();*/
+                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
+                Card card = new Card(CardType.FREEWRITE, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+
+                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
 
                 Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
