@@ -27,15 +27,14 @@ public class CommunityActivity extends AppCompatActivity {
     private DatabaseReference mRef = mFirebaseDatabase.getReference("CommunityTable");
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private String currentUser = mFirebaseAuth.getCurrentUser().getUid();
-    public List<Card> communityCards = new ArrayList<>();
+    List<Card> communityCards = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community_page_layout);
-
         setCommunityCardAdapter();
-        setupRecyclerView();
+
     }
 
     private void setCommunityCardAdapter() {
@@ -47,17 +46,18 @@ public class CommunityActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Card card = createCard(postSnapshot);
                     if (!card.getUid().equals(currentUser)) {
-                        addToList(card);
+                        communityCards.add(card);
                     }
                 }
+                mAdapter = new CommunityCardAdapter(communityCards);
+                setupRecyclerView();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
-        mAdapter = new CommunityCardAdapter(communityCards);
     }
 
     private void setupRecyclerView() {
@@ -106,9 +106,5 @@ public class CommunityActivity extends AppCompatActivity {
                 return CardType.WEEKLY;
         }
         return CardType.FREEWRITE;
-    }
-
-    public void addToList(Card card){
-        communityCards.add(card);
     }
 }

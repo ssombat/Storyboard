@@ -19,7 +19,7 @@ import android.widget.Toolbar;
 
 public class ProfileFragment extends Fragment{
     ImageView profilePic;
-    EditText bio;
+    TextView bio;
     Button communityButton, composeButton;
     PopupMenu popupMenu;
 
