@@ -16,7 +16,15 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class PromptActivity extends AppCompatActivity {
+
+    String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference mRef = mDatabase.getReference("CardTable");
 
     EditText draftText;
     TextView visibilityText;
@@ -61,6 +69,10 @@ public class PromptActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
+                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+
+                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
                 Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
