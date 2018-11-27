@@ -32,6 +32,7 @@ public class FlashCardsFragment extends Fragment {
     private DatabaseReference mRef = mFirebaseDatabase.getReference("CardTable");
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private String currentUser = mFirebaseAuth.getCurrentUser().getUid();
+    public List<Card> cards = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,15 +51,13 @@ public class FlashCardsFragment extends Fragment {
         return v;
     }
     private void setCardsDataAdapter() {
-        final List<Card> cards = new ArrayList<>();
         // Gets the cards out of the database for the current user
-        // TODO set up cards correctly, currently pulls cards out the database.
         mRef.child(currentUser).child("Cards").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Card card = createCard(postSnapshot);
-                    cards.add(card);
+                    addCardToList(card);
                 }
             }
 
@@ -78,7 +77,6 @@ public class FlashCardsFragment extends Fragment {
         swipeController = new SwipeController(new SwipeControllerActions() {
             @Override
             public void onRightClicked(int position) {
-                //TODO REMOVE THE CARD FROM VIEW AND REMOVE FROM DATA BASE
                 Card card = mAdapter.cards.get(position);
                 mAdapter.cards.remove(position);
                 mAdapter.notifyItemRemoved(position);
@@ -156,5 +154,9 @@ public class FlashCardsFragment extends Fragment {
                 return CardType.WEEKLY;
         }
         return CardType.FREEWRITE;
+    }
+
+    public void addCardToList(Card card) {
+        cards.add(card);
     }
 }

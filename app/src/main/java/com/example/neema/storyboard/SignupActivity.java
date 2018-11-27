@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRefUserTable = mFirebaseDatabase.getReference("UserTable");
     DatabaseReference mRefCardTable = mFirebaseDatabase.getReference("CardTable");
+    DatabaseReference mRefCommunityTable =  mFirebaseDatabase.getReference("CommunityTable");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +104,15 @@ public class SignupActivity extends AppCompatActivity {
                     String cardKey = mRefCardTable.child(userId).child("Cards").push().getKey();
                     mRefCardTable.child(userId).child("Cards").child(cardKey).setValue(new Card(CardType.FREEWRITE, userId, cardKey,"Welcome","Welcome to Storyboard", false));
 
+                    // TODO: REMOVE ADDING CARDS TO COMMUNITYTABLE. TESTING DELETE LINES 107 - 115
+
+                    for (int i = 0; i < 10; i++) {
+                        String communityKey0 = mRefCommunityTable.push().getKey();
+                        mRefCommunityTable.child(communityKey0).setValue(new Card(CardType.FREEWRITE, "FAKEID", communityKey0, "Community test" + i, "This is a test", true));
+                    }
+
+                    String communityKey = mRefCommunityTable.push().getKey();
+                    mRefCommunityTable.child(communityKey).setValue(new Card(CardType.FREEWRITE, userId, communityKey, "Should not see this", "no", true));
 
                     // TODO: Popup telling the user to check email. Remove toast when done.
                     Toast.makeText(getApplicationContext(), getString(R.string.registration_complete), Toast.LENGTH_LONG).show();
