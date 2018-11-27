@@ -32,12 +32,13 @@ public class FlashCardsFragment extends Fragment {
     private DatabaseReference mRef = mFirebaseDatabase.getReference("CardTable");
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private String currentUser = mFirebaseAuth.getCurrentUser().getUid();
+    public List<Card> cards = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setRetainInstance(true);
-        setCardsDataAdapter();
+
     }
     /*@Override
     public void onViewCreated(View view, Bundle instanceSaved) {
@@ -46,13 +47,11 @@ public class FlashCardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //TODO fill in the stuff for the layout for the profile fragment
         View v = inflater.inflate(R.layout.cards_list,container,false);
-        setupRecyclerView(v);
+        setCardsDataAdapter(v);
         return v;
     }
-    private void setCardsDataAdapter() {
-        final List<Card> cards = new ArrayList<>();
+    private void setCardsDataAdapter(final View v) {
         // Gets the cards out of the database for the current user
-        // TODO set up cards correctly, currently pulls cards out the database.
         mRef.child(currentUser).child("Cards").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -60,6 +59,8 @@ public class FlashCardsFragment extends Fragment {
                     Card card = createCard(postSnapshot);
                     cards.add(card);
                 }
+                mAdapter = new CardAdapter(cards);
+                setupRecyclerView(v);
             }
 
             @Override
@@ -69,7 +70,7 @@ public class FlashCardsFragment extends Fragment {
         });
 
 
-        mAdapter = new CardAdapter(cards);
+
     }
     private void setupRecyclerView(View v) {
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
@@ -78,7 +79,6 @@ public class FlashCardsFragment extends Fragment {
         swipeController = new SwipeController(new SwipeControllerActions() {
             @Override
             public void onRightClicked(int position) {
-                //TODO REMOVE THE CARD FROM VIEW AND REMOVE FROM DATA BASE
                 Card card = mAdapter.cards.get(position);
                 mAdapter.cards.remove(position);
                 mAdapter.notifyItemRemoved(position);
@@ -156,5 +156,9 @@ public class FlashCardsFragment extends Fragment {
                 return CardType.WEEKLY;
         }
         return CardType.FREEWRITE;
+    }
+
+    public void addCardToList(Card card) {
+        cards.add(card);
     }
 }

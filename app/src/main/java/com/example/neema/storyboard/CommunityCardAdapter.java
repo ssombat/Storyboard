@@ -36,7 +36,7 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<CommunityCardAdap
     @Override
     public void onBindViewHolder(CommunityViewHolder holder, int position) {
         Card card = communityCard.get(position);
-        holder.text.setText("test "+ position);
+        holder.text.setText(card.getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
