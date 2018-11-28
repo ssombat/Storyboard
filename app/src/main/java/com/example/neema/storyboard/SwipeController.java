@@ -65,10 +65,13 @@ public class SwipeController extends Callback{
             super.onChildDraw(c,recyclerView,viewHolder,dX,dY,actionstate,isCurrentlyActive);
         }
         currentItemViewHolder = viewHolder;
+        onDraw(c);
 
     }
+
     private void setTouchListener(final Canvas c, final RecyclerView recyclerView, final RecyclerView.ViewHolder viewHolder,
                                   final float dX, final float dY, final int actionstate, final boolean isCurrentlyActive) {
+
         recyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v,MotionEvent event) {
