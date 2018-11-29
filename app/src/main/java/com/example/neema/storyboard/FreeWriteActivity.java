@@ -1,6 +1,7 @@
 package com.example.neema.storyboard;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,12 +41,20 @@ public class FreeWriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freewrite);
+        Intent intent = getIntent();
+
 
         draftText = findViewById(R.id.draftText);
         visibilityText = findViewById(R.id.visibilityText);
         titleText = findViewById(R.id.toolbarTitle);
         privacySwitch = findViewById(R.id.privacySwitch);
         isPrivate = privacySwitch.isChecked();
+
+        if (intent!= null){
+            draftText.setText(intent.getStringExtra("Text"));
+            titleText.setText(intent.getStringExtra("Title"));
+        }
+
         FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
         FloatingActionButton uploadButton = (FloatingActionButton) findViewById(R.id.uploadButton);
         FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);

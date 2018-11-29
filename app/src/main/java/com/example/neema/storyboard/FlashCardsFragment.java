@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ public class FlashCardsFragment extends Fragment {
     private CardAdapter mAdapter;
     SwipeController swipeController;
     ItemTouchHelper itemTouchHelper;
+
+    private static String TAG = "Flashcard fragment";
 
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mRef = mFirebaseDatabase.getReference("CardTable");
@@ -94,14 +97,23 @@ public class FlashCardsFragment extends Fragment {
                 //TODO BRIAN's PAGE
                 Card card = mAdapter.cards.get(position);
                 CardType type = card.cardType;
+                Log.d(TAG, "edit was clicked");
                 switch(type) {
                     case FREEWRITE:
                         //TODO FREWRITE ACTIVITY
-                        startActivity(new Intent(getContext(),FreeWriteActivity.class));
+                        Intent intent = new Intent(getActivity(), FreeWriteActivity.class);
+                        intent.putExtra("Title", card.getTitle());
+                        intent.putExtra("Text", card.getText());
+                        intent.putExtra("uid", card.getUid());
+                        intent.putExtra("Publicity", card.isPublic());
+                        intent.putExtra("Cardid", card.getCardId());
+                        Log.d(TAG, "Freewrite was selected");
+                        startActivity(intent);
                         break;
                     case PROMPT:
                         //TODO PROMPT ACTIVITY
-                        startActivity(new Intent(getContext(),PromptActivity.class));
+                        Log.d(TAG, "edit was clicked");
+                        startActivity(new Intent(getActivity(),PromptActivity.class));
                         break;
                     case WEEKLY:
                         //TODO IDK IF ANYTHING IS NEEDED
