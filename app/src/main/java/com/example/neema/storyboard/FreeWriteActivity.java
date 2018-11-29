@@ -46,7 +46,7 @@ public class FreeWriteActivity extends AppCompatActivity {
         titleText = findViewById(R.id.toolbarTitle);
         privacySwitch = findViewById(R.id.privacySwitch);
         isPrivate = privacySwitch.isChecked();
-        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
+//        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
         FloatingActionButton uploadButton = (FloatingActionButton) findViewById(R.id.uploadButton);
         FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);
 
@@ -67,34 +67,40 @@ public class FreeWriteActivity extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*
-                TODO: DATA TO SUBMIT TO FIREBASE
-                isPrivate
-                titleText.getText().toString();
-                draftText.getText().toString();*/
-                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
-                Card card = new Card(CardType.FREEWRITE, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
-
-                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
-
-                Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                /*
+//                TODO: DATA TO SUBMIT TO FIREBASE
+//                isPrivate
+//                titleText.getText().toString();
+//                draftText.getText().toString();*/
+//                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
+//                Card card = new Card(CardType.FREEWRITE, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+//
+//                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
+//
+//                Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder inputDialog = new AlertDialog.Builder(FreeWriteActivity.this);
-                inputDialog.setTitle("Are you sure you want to upload this story to the community?");
+                if(isPrivate){
+                    inputDialog.setTitle("Are you sure you want to post this story privately?");
+
+                } else {
+                    inputDialog.setTitle("Are you sure you want to upload this story to the community?");
+                }
 
                 inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //TODO: UPLOAD STORY CONTENTS TO THE COMMUNITY PAGE
+                        //TODO: UPLOAD PROMPT BASED ON PRIVACY
                         Toast.makeText(getApplicationContext(),
                                 "Uploaded successfully!",
                                 Toast.LENGTH_LONG).show();
