@@ -142,6 +142,7 @@ public class FlashCardsFragment extends Fragment {
                 break;
             case PROMPT:
                 card = new Card(CardType.PROMPT, uid, cardId, "", text, isPublic);
+                break;
             default:
                 card = new Card(CardType.FREEWRITE, uid, cardId, title, text, isPublic);
         }
