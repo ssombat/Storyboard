@@ -178,7 +178,7 @@
 
     <!-- Weekly Stuff -->
     <string name="weekly_challenge_header"><u><b>Weekly Challenge</b></u></string>
-    <string name="title_activity_side_menu">SideMenu</string>
+    <string name="title_activity_side_menu">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
