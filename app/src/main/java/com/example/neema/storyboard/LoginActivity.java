@@ -57,9 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    // TODO: Need to pass in the uid of the login user to the intent
-                    String userUid = mFirebaseAuth.getCurrentUser().getUid();
-                    startActivity(new Intent(LoginActivity.this, HomepageActivity.class));
+                    startActivity(new Intent(LoginActivity.this, SideMenu.class));
                 }
                 else {
                     String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
