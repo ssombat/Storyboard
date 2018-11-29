@@ -1,6 +1,7 @@
 package com.example.neema.storyboard;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,7 +31,8 @@ public class FreeWriteActivity extends AppCompatActivity {
     TextView visibilityText;
     TextView titleText;
     Switch privacySwitch;
-    boolean isPrivate;
+    private String CardID, Uid, privacyText;
+    boolean isPublic;
 
     Toolbar toolbar;
     //For editing title
@@ -40,12 +42,34 @@ public class FreeWriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freewrite);
+        Intent intent = getIntent();
 
         draftText = findViewById(R.id.draftText);
         visibilityText = findViewById(R.id.visibilityText);
         titleText = findViewById(R.id.toolbarTitle);
         privacySwitch = findViewById(R.id.privacySwitch);
-        isPrivate = privacySwitch.isChecked();
+        isPublic = privacySwitch.isChecked();
+
+        if (intent.getExtras()!= null){
+            draftText.setText(intent.getStringExtra("Text"));
+            titleText.setText(intent.getStringExtra("Title"));
+            CardID = intent.getStringExtra("CardId");
+            Uid = intent.getStringExtra("uid");
+            isPublic = (intent.getBooleanExtra("Pub", false));
+
+            if (isPublic){//(privacyText != null && privacyText.equals("true")){
+                visibilityText.setText("Public");
+                isPublic = true;
+                privacySwitch.setChecked(true);
+            }
+            else {
+                visibilityText.setText("Private");
+                isPublic = false;
+                privacySwitch.setChecked(false);
+            }
+
+        }
+
 //        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
         FloatingActionButton uploadButton = (FloatingActionButton) findViewById(R.id.uploadButton);
         FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);
@@ -58,15 +82,19 @@ public class FreeWriteActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    visibilityText.setText("Private");
-                }
-                else {
                     visibilityText.setText("Public");
                 }
-                isPrivate = isChecked;
+                else {
+                    visibilityText.setText("Private");
+                }
+                isPublic = isChecked;
             }
         });
 
+             /*
+            TODO: Update card if (intent != null)
+            the proper fields are update, use CardId and Uid
+      */
 //        saveButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -80,6 +108,7 @@ public class FreeWriteActivity extends AppCompatActivity {
 //
 //                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
 //
+
 //                Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
 //            }
@@ -89,7 +118,7 @@ public class FreeWriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder inputDialog = new AlertDialog.Builder(FreeWriteActivity.this);
-                if(isPrivate){
+                if(isPublic){
                     inputDialog.setTitle("Are you sure you want to post this story privately?");
 
                 } else {

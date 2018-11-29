@@ -76,7 +76,8 @@
         <Switch
             android:id="@+id/privacySwitch"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:checked="true"/>
         <TextView
             android:id="@+id/visibilityText"
             android:layout_width="match_parent"
