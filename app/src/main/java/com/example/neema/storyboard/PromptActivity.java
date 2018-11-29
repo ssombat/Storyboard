@@ -66,17 +66,17 @@ public class PromptActivity extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
-                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
-
-                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
-                Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
+//                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+//
+//                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
+//                Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override

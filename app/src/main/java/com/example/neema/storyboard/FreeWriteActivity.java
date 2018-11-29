@@ -67,23 +67,23 @@ public class FreeWriteActivity extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                /*
-                TODO: DATA TO SUBMIT TO FIREBASE
-                isPrivate
-                titleText.getText().toString();
-                draftText.getText().toString();*/
-                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
-                Card card = new Card(CardType.FREEWRITE, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
-
-                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
-
-                Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        saveButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                /*
+//                TODO: DATA TO SUBMIT TO FIREBASE
+//                isPrivate
+//                titleText.getText().toString();
+//                draftText.getText().toString();*/
+//                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
+//                Card card = new Card(CardType.FREEWRITE, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+//
+//                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
+//
+//                Snackbar.make(view, "Saved", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
