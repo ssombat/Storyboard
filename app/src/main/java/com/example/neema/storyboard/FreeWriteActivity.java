@@ -31,7 +31,8 @@ public class FreeWriteActivity extends AppCompatActivity {
     TextView visibilityText;
     TextView titleText;
     Switch privacySwitch;
-    boolean isPrivate;
+    private String CardID, Uid, privacyText;
+    boolean isPublic;
 
     Toolbar toolbar;
     //For editing title
@@ -48,11 +49,26 @@ public class FreeWriteActivity extends AppCompatActivity {
         visibilityText = findViewById(R.id.visibilityText);
         titleText = findViewById(R.id.toolbarTitle);
         privacySwitch = findViewById(R.id.privacySwitch);
-        isPrivate = privacySwitch.isChecked();
+        isPublic = privacySwitch.isChecked();
 
-        if (intent!= null){
+        if (intent.getExtras()!= null){
             draftText.setText(intent.getStringExtra("Text"));
             titleText.setText(intent.getStringExtra("Title"));
+            CardID = intent.getStringExtra("CardId");
+            Uid = intent.getStringExtra("uid");
+            isPublic = (intent.getBooleanExtra("Pub", false));
+
+            if (isPublic){//(privacyText != null && privacyText.equals("true")){
+                visibilityText.setText("Public");
+                isPublic = true;
+                privacySwitch.setChecked(true);
+            }
+            else {
+                visibilityText.setText("Private");
+                isPublic = false;
+                privacySwitch.setChecked(false);
+            }
+
         }
 
         FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
@@ -67,12 +83,12 @@ public class FreeWriteActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
+                    visibilityText.setText("Public");
+                }//maybe try change
+                else {
                     visibilityText.setText("Private");
                 }
-                else {
-                    visibilityText.setText("Public");
-                }
-                isPrivate = isChecked;
+                isPublic = isChecked;
             }
         });
 
@@ -84,8 +100,13 @@ public class FreeWriteActivity extends AppCompatActivity {
                 isPrivate
                 titleText.getText().toString();
                 draftText.getText().toString();*/
+                /*
+                TODO: Update card if (intent != null)
+                the proper fields are update, use CardId and Uid
+                */
+
                 String cardId = mRef.child(currentUser).child("Cards").push().getKey();
-                Card card = new Card(CardType.FREEWRITE, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+                Card card = new Card(CardType.FREEWRITE, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), isPublic);
 
                 mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
 

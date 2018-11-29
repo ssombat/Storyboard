@@ -105,8 +105,9 @@ public class FlashCardsFragment extends Fragment {
                         intent.putExtra("Title", card.getTitle());
                         intent.putExtra("Text", card.getText());
                         intent.putExtra("uid", card.getUid());
-                        intent.putExtra("Publicity", card.isPublic());
-                        intent.putExtra("Cardid", card.getCardId());
+
+                        intent.putExtra("Pub", card.isPublic());
+                        intent.putExtra("CardId", card.getCardId());
                         Log.d(TAG, "Freewrite was selected");
                         startActivity(intent);
                         break;
@@ -154,6 +155,7 @@ public class FlashCardsFragment extends Fragment {
                 break;
             case PROMPT:
                 card = new Card(CardType.PROMPT, uid, cardId, "", text, isPublic);
+                break;
             default:
                 card = new Card(CardType.FREEWRITE, uid, cardId, title, text, isPublic);
         }
