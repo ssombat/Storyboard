@@ -119,10 +119,10 @@ public class FreeWriteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final AlertDialog.Builder inputDialog = new AlertDialog.Builder(FreeWriteActivity.this);
                 if(isPublic){
-                    inputDialog.setTitle("Are you sure you want to post this story privately?");
+                    inputDialog.setTitle("Are you sure you want to upload this story to the community?");
 
                 } else {
-                    inputDialog.setTitle("Are you sure you want to upload this story to the community?");
+                    inputDialog.setTitle("Are you sure you want to post this story privately?");
                 }
 
                 inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
