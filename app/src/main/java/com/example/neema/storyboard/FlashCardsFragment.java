@@ -55,9 +55,11 @@ public class FlashCardsFragment extends Fragment {
         mRef.child(currentUser).child("Cards").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                cards.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Card card = createCard(postSnapshot);
-                    cards.add(card);
+                    if (!cards.contains(card))
+                        cards.add(card);
                 }
                 mAdapter = new CardAdapter(cards);
                 setupRecyclerView(v);
@@ -140,6 +142,7 @@ public class FlashCardsFragment extends Fragment {
                 break;
             case PROMPT:
                 card = new Card(CardType.PROMPT, uid, cardId, "", text, isPublic);
+                break;
             default:
                 card = new Card(CardType.FREEWRITE, uid, cardId, title, text, isPublic);
         }
