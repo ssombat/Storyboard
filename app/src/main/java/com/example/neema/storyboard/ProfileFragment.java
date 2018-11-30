@@ -54,14 +54,6 @@ public class ProfileFragment extends Fragment{
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.compose_actions, popupMenu.getMenu());
 
-        communityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),CommunityActivity.class);
-                startActivity(intent);
-            }
-        });
-
         composeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,10 +73,7 @@ public class ProfileFragment extends Fragment{
                         Toast.makeText(getActivity(), "prompt selected", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getActivity(), PromptActivity.class));
                         return true;
-                    case R.id.settingsOption:
-                        Toast.makeText(getActivity(), "settings selected", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity(), SettingsActivity.class));
-                        return true;
+
                     default:
                         return false;
                 }
