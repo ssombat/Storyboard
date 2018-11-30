@@ -57,7 +57,7 @@ public class FreeWriteActivity extends AppCompatActivity {
             Uid = intent.getStringExtra("uid");
             isPublic = (intent.getBooleanExtra("Pub", false));
 
-            if (isPublic){//(privacyText != null && privacyText.equals("true")){
+            if (isPublic){
                 visibilityText.setText("Public");
                 isPublic = true;
                 privacySwitch.setChecked(true);
@@ -91,10 +91,6 @@ public class FreeWriteActivity extends AppCompatActivity {
             }
         });
 
-             /*
-            TODO: Update card if (intent != null)
-            the proper fields are update, use CardId and Uid
-      */
 //        saveButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
