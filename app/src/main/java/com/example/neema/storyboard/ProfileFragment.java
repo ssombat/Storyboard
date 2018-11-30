@@ -34,20 +34,11 @@ public class ProfileFragment extends Fragment{
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         bio = view.findViewById(R.id.bio);
-        communityButton = view.findViewById(R.id.communitySubmit);
         composeButton = view.findViewById(R.id.composeSubmit);
 
         popupMenu = new PopupMenu(getActivity(), composeButton);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.compose_actions, popupMenu.getMenu());
-
-        communityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),CommunityActivity.class);
-                startActivity(intent);
-            }
-        });
 
         composeButton.setOnClickListener(new View.OnClickListener() {
             @Override
