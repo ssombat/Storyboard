@@ -59,10 +59,7 @@ public class ProfileFragment extends Fragment{
                         Toast.makeText(getActivity(), "prompt selected", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getActivity(), PromptActivity.class));
                         return true;
-                    case R.id.settingsOption:
-                        Toast.makeText(getActivity(), "settings selected", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity(), SettingsActivity.class));
-                        return true;
+                    
                     default:
                         return false;
                 }
