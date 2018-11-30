@@ -108,7 +108,14 @@ public class FlashCardsFragment extends Fragment {
                         break;
                     case PROMPT:
                         //TODO PROMPT ACTIVITY
-                        startActivity(new Intent(getContext(),PromptActivity.class));
+                        Intent in = new Intent(getActivity(), PromptActivity.class);
+                        in.putExtra("Title", card.getTitle());
+                        in.putExtra("Text", card.getText());
+                        in.putExtra("uid", card.getUid());
+
+                        in.putExtra("Pub", card.isPublic());
+                        in.putExtra("CardId", card.getCardId());
+                        startActivity(in);
                         break;
                     case WEEKLY:
                         //TODO IDK IF ANYTHING IS NEEDED
