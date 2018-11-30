@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment{
     TextView bio, username;
-    Button communityButton, composeButton;
+    Button composeButton;
     PopupMenu popupMenu;
 
     String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -47,7 +47,6 @@ public class ProfileFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         bio = view.findViewById(R.id.bio);
         username = view.findViewById(R.id.usernameText);
-        communityButton = view.findViewById(R.id.communitySubmit);
         composeButton = view.findViewById(R.id.composeSubmit);
         setText();
         popupMenu = new PopupMenu(getActivity(), composeButton);
