@@ -26,12 +26,13 @@ public class PromptActivity extends AppCompatActivity {
     String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
     FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     DatabaseReference mRef = mDatabase.getReference("CardTable");
+    DatabaseReference mCommunityTable = mDatabase.getReference("CommunityTable");
 
     EditText draftText;
     TextView visibilityText;
     TextView titleText;
     Switch privacySwitch;
-    boolean isPublic;
+    boolean isPublic, isNewCard;
     private String CardID, Uid, privacyText;
 
     //For editing title
@@ -48,13 +49,14 @@ public class PromptActivity extends AppCompatActivity {
         titleText = findViewById(R.id.toolbarTitle);
         privacySwitch = findViewById(R.id.privacySwitch);
         isPublic = privacySwitch.isChecked();
-
+        isNewCard = true;
         if (intent.getExtras()!= null){
             draftText.setText(intent.getStringExtra("Text"));
             titleText.setText(intent.getStringExtra("Title"));
             CardID = intent.getStringExtra("CardId");
             Uid = intent.getStringExtra("uid");
             isPublic = (intent.getBooleanExtra("Pub", false));
+            isNewCard = false;
 
             if (isPublic){
                 visibilityText.setText("Public");
@@ -68,7 +70,7 @@ public class PromptActivity extends AppCompatActivity {
             }
 
         }
-//        FloatingActionButton saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
+
         FloatingActionButton uploadButton = (FloatingActionButton) findViewById(R.id.uploadButton);
         FloatingActionButton titleButton = (FloatingActionButton) findViewById(R.id.titleButton);
 
@@ -89,18 +91,6 @@ public class PromptActivity extends AppCompatActivity {
             }
         });
 
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String cardId = mRef.child(currentUser).child("Cards").push().getKey();
-//                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
-//
-//                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
-//                Snackbar.make(view, "Save button pressed", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,13 +105,37 @@ public class PromptActivity extends AppCompatActivity {
                 inputDialog.setNegativeButton("Submit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        /*
-                    TODO: Update card if (intent != null)
-                    the fields are updated for isPublic, title and text. use dont update cardID and use Uid
-                    */
+                        String cardId;
+                        if (!isPublic) {
+                            if (isNewCard) {
+                                cardId = mRef.child(currentUser).child("Cards").push().getKey();
+                                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+                                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
+                            }
+                            else {
+                                cardId = CardID;
+                                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), false);
+                                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
+                            }
+                        }
+                        else {
+                            if (isNewCard) {
+                                cardId = mRef.child(currentUser).child("Cards").push().getKey();
+                                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), true);
+                                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
 
-                        //TODO: UPLOAD PROMPT TEXT AND TITLE TO COMMUNITY
-                        //TODO: UPLOAD PROMPT BASED ON PRIVACY
+                                //Adds to community table
+                                mCommunityTable.child(cardId).setValue(card);
+                            }
+                            else {
+                                cardId = CardID;
+                                Card card = new Card(CardType.PROMPT, currentUser, cardId, titleText.getText().toString(), draftText.getText().toString(), true);
+                                mRef.child(currentUser).child("Cards").child(cardId).setValue(card);
+
+                                //Adds to community table
+                                mCommunityTable.child(cardId).setValue(card);
+                            }
+                        }
                         Toast.makeText(getApplicationContext(),
                                 "Uploaded successfully!",
                                 Toast.LENGTH_LONG).show();
